@@ -31,10 +31,14 @@ class MyGithub
     status = Array.new
     repo = Octokit::Client.new.repository(@repo_name)
     pulls = Octokit.pulls(@repo_name, :state => 'open').count
-    status.push({label: 'issues', value: repo.open_issues_count - pulls})
+    stats = Octokit::contributors_stats(@repo_name).sort! { |a,b| b.weeks[-1].c <=> a.weeks[-1].c }
+    stats.each do |stat|
+      if (stat.weeks[-1].c > 0)
+        status.push({label: stat.author.login, value: "#{stat.weeks[-1].c} commits"})
+      end
+    end
     status.push({label: 'pulls', value: pulls})
-    status.push({label: 'forks', value: repo.forks})
-    status.push({label: 'activity', value: time_ago_in_words(repo.updated_at).capitalize})
+    status.push({label: 'issues', value: repo.open_issues_count - pulls})
     status
   end
 end
