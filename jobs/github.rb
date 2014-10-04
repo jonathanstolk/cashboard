@@ -7,10 +7,10 @@ Octokit.configure do |c|
   c.access_token = ENV['GITHUB_ACCESS_TOKEN']
 end
 
-repos = {
-  'SafetyAppsServer' => 'changer/safetyapps-server',
-  'SafetyAppsClient' => 'changer/safetyapps-client',
-  'SocialSchools' => 'changer/cp'
+widgets = {
+  'Github_SafetyAppsServer' => 'changer/safetyapps-server',
+  'Github_SafetyAppsClient' => 'changer/safetyapps-client',
+  'Github_SocialSchools' => 'changer/cp'
 }
 
 class MyGithub
@@ -44,7 +44,7 @@ class MyGithub
 end
 
 @MyGithub = []
-repos.each do |widget_id, repo_name|
+widgets.each do |widget_id, repo_name|
   begin
     @MyGithub.push(MyGithub.new(widget_id, repo_name))
   rescue Exception => e
@@ -53,9 +53,9 @@ repos.each do |widget_id, repo_name|
 end
 
 SCHEDULER.every '5m', :first_in => 0 do |job|
-  @MyGithub.each do |repo|
-    status = repo.status_list()
-    send_event(repo.widget_id, { :items => status })
+  @MyGithub.each do |widget|
+    status = widget.status_list()
+    send_event(widget.widget_id, { :items => status })
   end
 end
 

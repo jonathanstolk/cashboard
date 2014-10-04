@@ -7,8 +7,8 @@ Trello.configure do |config|
   config.member_token = ENV['TRELLO_MEMBER_TOKEN']
 end
 
-boards = {
-  'SafetyAppsTrello' => '53ce3bcd2d61366b27aa1f55',
+widgets = {
+  'Trello_SafetyApps' => '53ce3bcd2d61366b27aa1f55',
 }
 
 class MyTrello
@@ -50,7 +50,7 @@ class MyTrello
 end
 
 @MyTrello = []
-boards.each do |widget_id, board_id|
+widgets.each do |widget_id, board_id|
   begin
     @MyTrello.push(MyTrello.new(widget_id, board_id))
   rescue Exception => e
@@ -59,8 +59,8 @@ boards.each do |widget_id, board_id|
 end
 
 SCHEDULER.every '5m', :first_in => 0 do |job|
-  @MyTrello.each do |board|
-    status = board.status_list()
-    send_event(board.widget_id, { :items => status })
+  @MyTrello.each do |widget|
+    status = widget.status_list()
+    send_event(widget.widget_id, { :items => status })
   end
 end
