@@ -1,7 +1,7 @@
 <script type='text/javascript'>
 $(function() {
   // These settings override the defaults set in application.coffee. You can do this on a per dashboard basis.
-  Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
+  //Dashing.gridsterLayout('[{"col":2,"row":1},{"col":1,"row":1},{"col":3,"row":1},{"col":2,"row":2},{"col":3,"row":2},{"col":1,"row":2},{"col":5,"row":1},{"col":4,"row":2},{"col":2,"row":3}]')
   Dashing.widget_base_dimensions = [370, 340]
   Dashing.numColumns = 5
 });
@@ -14,41 +14,41 @@ $(function() {
   <ul>
 
     <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="SafetyAppsServer" data-view="List" data-title="SafetyChanger API"></div>
-      <i class="icon-github icon-background"></i>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
       <div data-view="Clock"></div>
       <i class="icon-time icon-background"></i>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="1" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="SafetyAppsServer" data-view="List" data-title="SafetyChanger API"></div>
+      <i class="icon-github icon-background"></i>
+    </li>
+
+    <li data-row="1" data-col="3" data-sizex="2" data-sizey="1">
       <div data-id="welcome" data-view="Text" data-title="Hello" data-text="Welcome to the Cashboard" data-moreinfo="Protip: You can drag the widgets around!"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <li data-row="1" data-col="5" data-sizex="1" data-sizey="1">
       <div data-id="synergy" data-view="Meter" data-title="Synergy" data-min="0" data-max="100"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-      <div data-id="twitter_user_followers" data-view="Number" data-title="Twitter Followers" style="background-color: #1d9fe3"></div>
-    </li>
-
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="2">
-      <div data-id="SafetyAppsTrello" data-view="List" data-title="SafetyChanger Trello"></div>
+    <li data-row="2" data-col="1" data-sizex="1" data-sizey="2">
+      <div data-id="SafetyAppsTrello" data-view="List" data-title="SafetyChanger" style="background-color: #5a966e;"></div>
       <i class="icon-trello icon-background"></i>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+    <li data-row="2" data-col="2" data-sizex="1" data-sizey="1">
+      <div data-id="twitter_user_followers" data-view="Number" data-title="Twitter Followers" style="background-color: #1d9fe3"></div>
+    </li>
+
+    <li data-row="2" data-col="3" data-sizex="1" data-sizey="1">
       <div data-id="facebook_likes" data-view="Number" data-title="Facebook Likes" style="background-color: #3b5998"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+    <li data-row="2" data-col="4" data-sizex="2" data-sizey="2">
       <div data-id="convergence" data-view="Graph" data-title="Convergence" style="background-color:#47bbb3;"></div>
     </li>
 
-    <li data-row="1" data-col="1" data-sizex="2" data-sizey="1">
+    <li data-row="3" data-col="2" data-sizex="2" data-sizey="1">
       <div data-id="twitter_mentions" data-view="Comments" style="background-color:#ff9618;" data-moreinfo="@changer"></div>
       <i class="icon-twitter icon-background"></i>
     </li>
