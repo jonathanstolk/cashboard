@@ -27,9 +27,24 @@ class MyTrello
 
   def status_list()
     status = Array.new
+    todo = 0
+    done = 0
+    doing = 0
     Board.find(@board_id).lists.each do |list|
-      status.push({label: list.name, value: list.cards.size})
+      if (list.name =~ /To Do/)
+        todo += list.cards.size
+      elsif (list.name =~ /Done/)
+        done += list.cards.size
+      elsif (list.name =~ /Doing/)
+        doing += list.cards.size
+      else
+        status.push({ label: list.name, value: list.cards.size })
+      end
     end
+    status = status.sort_by { |k| k[:label] }
+    status.unshift({label: 'To Do', value: todo })
+    status.unshift({label: 'Doing', value: doing })
+    status.unshift({label: 'Done', value: done })
     status
   end
 end
