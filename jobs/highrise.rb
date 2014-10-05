@@ -58,7 +58,7 @@ SCHEDULER.every '5m', :first_in => 0 do |job|
   @MyHighrise.each do |widget|
     status = widget.status_list()
     #send_event(widget.widget_id, { :items => status })
-    deals = Highrise::Deal.find(:all)
+    deals = Highrise::Deal.find(:all, :conditions => { :category => 4677110 })
     send_event(widget.widget_id, { value: deals.count })
   end
 
